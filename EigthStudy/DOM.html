@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JavaScriptDOM动画练习</title>
+    <style>
+      #container {
+        width: 600px;
+        height: 400px;
+        background: rgb(170, 199, 170);
+        position: relative;
+      }
+      #box {
+        width: 60px;
+        height: 60px;
+        background: rgb(211, 144, 144);
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body> <!--1.动画-->
+    <div id="container">
+      <div id="box"></div>
+    </div>
+    <script>
+      //动画
+      var pos = 0; // 盒子元素
+      var box = document.getElementById("box");
+      var t = setInterval(move, 10);
+      function move() {
+        if (pos >= 540) {
+          clearInterval(t);
+        } else {
+          pos += 1;
+          box.style.left = pos + "px";
+        }
+      }
+    </script>
+    <!--2.选择元素-->
+    <di     v class="demo">
+      <span class="demo">Hi I'm Loen!</span>
+    </div>
+    <p class="demo">This is a paragraph</p>
+    <script>
+      var arr = document.getElementsByClassName("demo");
+      //访问第二个元素
+      arr[1].innerHTML = "Hi I am Peter";
+    </script>
+    <p>hi</p>
+    <p>hello</p>
+    <p>hi</p>
+    <script>
+      //getElementsByTagName 方法返回指定标签名称的所有元素,作为数组返回
+      var arr = document.getElementsByTagName("p");
+      for (var x = 0; x < arr.length; x++) {
+        arr[x].innerHTML = "Hi there";
+      }
+    </script>  
+      <!--3.我们可以选择元素的所有子节点并更改其内容--> 
+        <div id ="demo"> 
+          <p>一些文本</p> 
+          <p>另一些文本 </p> 
+        </div> 
+        <script> var a = document.getElementById("demo"); 
+        var arr = a.childNodes; 
+        for(var x=0;x<arr.length;x++) { 
+          arr[x].innerHTML = "新的文本";
+        }
+        </script>
+        <!--4.选择要使用的元素后，可以更改其属性-->  
+        <img id="my-img" src="1.jpg" alt="" /> 
+        <script> 
+        //改变sec属性
+        var el = document.getElementById("my-img"); // 通过id="my-img"获取元素 
+        el.src = "2.jpg"; 
+        </script>
+
+        <a href="http://www.baidu.com">百度</a> 
+        <script> 
+        //改变href中的链接
+        var el = document.getElementsByTagName("a"); 
+        el[0].href = "https://www.google.cn"; 
+        el[0].innerHTML = "google"; 
+        </script>  
+        <div id="demo" style="width:200px">一些文本</div> <script>
+         var x = document.getElementById("demo");
+         x.style.color = "6600FF";
+         x.style.width = "100px";
+      </script> 
+       <!--1.添加元素，element.appendChild(newNode) 将一个新的子节点添加到元素作为最后一个子节点。
+element.insertBefore(node1, node2) 在节点2之前插入node1作为子节点-->
+    <div id="demo">一些文本</div>
+    <script>
+      //创建一个新的段落
+      var p = document.createElement("p");
+      var node = document.createTextNode("一些新的文本");
+      //添加文本到段落
+      p.appendChild(node);
+      var div = document.getElementById("demo");
+      //将段落添加到div中
+      div.appendChild(p);
+    </script>
+    <!--2.删除元素，要删除HTML元素，必须选择元素的父项并使用 removeChild(node) 方法-->
+    <div id="demo">
+      <p id="p1">这是一个段落.</p>
+      <p id="p2">这是另外一个段落.</p>
+    </div>
+    <script>
+      var parent = document.getElementById("demo");
+      var child = document.getElementById("p1");
+      parent.removeChild(child); //答案：这是另外一个段落
+    </script>
+    <!--3.替换元素，使用 element.replaceChild(newNode,oldNode) 方法-->
+    <div id="demo">
+      <p id="p1">这是一个段落</p>
+      <p id="p2">这是另一个段落</p>
+    </div>
+    <script>
+      var p = document.createElement("p");
+      var node = document.createTextNode("这是新的文本");
+      p.appendChild(node);
+      var parent = document.getElementById("demo");
+      var child = document.getElementById("p1");
+      parent.replaceChild(p, child);
+    </script>
+</body>
+</html>
