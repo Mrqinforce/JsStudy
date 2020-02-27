@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JavaScript对象练习</title>
+  </head>
+  <body>
+    <script>
+      // 1.两种访问对象的属性
+      // ObjectName.getOwnPropertyName或者ObjectName['propertyName']
+      var person = {
+        name: "John",
+        age: 31,
+        favColor: "green",
+        height: 183
+      };
+      var x = person.age;
+      var y = person["age"];
+      document.write(y);
+      //2.内置长度属性用于计算属性或字符串中的字符数
+      var course = { name: "JS", lessons: 54 };
+      document.write(course.name.length);
+      //3.更新对象的属性
+      var ourDog = {
+        name: "Camper",
+        legs: 4,
+        tails: 1,
+        friends: ["everything！"]
+      };
+      ourDog.name = "Happy Camper";
+      //ourDog['name'] = 'Happy Camper'
+      document.write(ourDog.name);
+      //4.给对象添加属性
+      ourDog.bark = "bow-wow";
+      //等价于 ourDog["bark"] = "bow-wow";
+      //5.删除对象的属性
+      var c1 = ourDog["tails"]; //c1等于1
+      delete ourDog["tails"];
+      var c2 = ourDog["tails"]; //c2等于undefined
+      document.write(ourDog);
+      //6.对象方法：包含函数定义的属性
+      //使用UpperCase()将文本转换为大写
+      var message = "Hello word";
+      var x = message.toUpperCase();
+      document.write(x);
+      //使用[]读取对象属性
+      var a = "age";
+      var myObj = {
+        name: "Loen",
+        age: "28",
+        eat: function() {
+          return "I'm eating";
+        }
+      };
+      //Loen
+      document.write(myObj["name"]);
+      //可以使用变量访问对象属性，返回28
+      document.write(myObj[a]);
+      //返回I'm eating
+      document.write(myObj["eat"]());
+      //7.对象构造器：JavaScript使用函数来构造，this通常指向的是我们正在执行的函数本身，或者是指向该函数所属的对象（运行时)
+      function person(firstname, lastname, age, eyecolor) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+        this.eyecolor = eyecolor;
+      }
+      var myFather = new person("John", "Doe", 50, "blue");
+      var myMother = new person("Sally", "Rally", 48, "green");
+      //50
+      document.write(myFather.age);
+      //Sally
+      document.write(myMother.firstname);
+      //8.对象初始化
+      //使用英文大括号{}创建单个对象
+      var John = { name: "John", age: 25 };
+      var Loen = { name: "Loen", age: 28 };
+      //John
+      document.write(John.name);
+      //9.在构造函数中定义方法
+      function person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.changeName = function(name) {
+          this.name = name;
+        };
+      }
+      var p = new person("Loen", 28);
+      p.changeName("John");
+      //也可以在构造函数外部定义一个函数，通过函数名关联到对象的属性上:
+      function person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.yearOfBirth = bornYear; // 关联 bornYear 函数
+      }
+      function bornYear() {
+        return new Date().getFullYear() - this.age;
+      }
+    </script>
+  </body>
+</html>
