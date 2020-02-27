@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JavaSprictDate对象练习</title>
+  </head>
+  <body>
+    <script>
+      //使用 new Date() , 将创建一个存储当前日期和时间的日期对象
+      //Fri Jan 02 1970 08:00:00 GMT+0800 (中国标准时间)
+      var d1 = new Date(86400000);
+      document.write(d1);
+      //Thu Oct 19 2017 15:56:00 GMT+0800 (中国标准时间)
+      var d2 = new Date("October 19, 2017 15:56:00");
+      document.write(d2);
+      //Sat Jun 11 1988 11:42:00 GMT+0800 (中国标准时间)
+      var d3 = new Date(88, 5, 11, 11, 42, 0, 0);
+      document.write(d3);
+      function printTime() {
+        var d = new Date();
+        var hours = d.getHours();
+        var mins = d.getMinutes();
+        var secs = d.getSeconds();
+        document.body.innerHTML = hours + ":" + mins + ":" + secs;
+      }
+      setInterval(printTime, 3000); // setInterval 第二个参数单位是 毫秒
+    </script>
+  </body>
+</html>

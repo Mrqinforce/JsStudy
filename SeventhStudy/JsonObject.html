@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JavaSprictJson对象练习</title>
+  </head>
+  <body>
+    <script>
+      var text =
+        '{"employees":[' +
+        '{"name":"baidu","site":"http://www.baidu.com" },' +
+        '{"name":"Google","site":"http://www.Google.com" },' +
+        '{"name":"Taobao","site":"http://www.taobao.com" }]}';
+      obj = JSON.parse(text);
+      document.getElementById("demo").innerHTML =
+        obj.employees[1].name + " " + obj.employees[1].site;
+      //JSON.parse() 方法
+      JSON.parse('{"p": 5, "s": 1.5, "t": -3}', function(k, v) {
+        if (k === "") return v; // 如果到了最顶层，则直接返回属性值，
+        return v * 2; // 否则将属性值变为原来的 2 倍。
+      }); // {"p": 10, "s": 3, "t": -6}
+
+      JSON.parse('{"1": 1, "2": 2,"3": {"4": 4, "5": {"6": 6}}}', function(k,v) {
+        console.log(k);  // 输出当前的属性名，从而得知遍历顺序是从内向外的，
+        return v;       // 最后一个属性名会是个空字符串。
+                       // 返回原始属性值，相当于没有传递 reviver 参数。
+        // 1
+        // 2
+        // 4
+        // 6
+        // 5
+        // 3
+        // ""
+      });
+
+      var str = { name: "baidu", site: "http://www.baidu.com" };
+      //JSON.stringify() 方法
+      str_pretty1 = JSON.stringify(str);
+      document.write("只有一个参数情况：");
+      document.write("<br>");
+      document.write("<pre>" + str_pretty1 + "</pre>");
+      document.write("<br>");
+      str_pretty2 = JSON.stringify(str, null, 4); //使用四个空格缩进
+      document.write("使用参数情况：");
+      document.write("<br>");
+      document.write("<pre>" + str_pretty2 + "</pre>"); // pre 用于格式化输出
+    </script>
+  </body>
+</html>
