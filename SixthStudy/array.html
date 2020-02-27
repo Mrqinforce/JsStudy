@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JavaScript数组练习</title>
+  </head>
+  <body>
+    <script>
+      //1.创建数组
+      var mycars = new Array("Saab", "Volvo", "BMW");
+      document.write(mycars[1]);
+      //JavaScript数组是动态的，可以声明一个数组，不给Array()构造函数传递任何参数，动态添加数据
+      //   var mycars = new Array()
+      //   mycars[0] = 'Saab'
+      //   mycars[1] = 'Volvo'
+      //   mycars[2] = 'BMW'
+      //   mycars[3] = 'Lincoln'
+      //2.数组方法
+      //（1）push(),在数组末尾增加一个或多个元素
+      var a = [];
+      a.push("zero");
+      a.push("one", "two");
+      for (var i = 0; i < a.length; i++) {
+        document.write(a[i]);
+      }
+      //(2)pop(),改变数组中数据的另一种方法
+      var oneDown = [1, 4, 6].pop();
+        document.write(oneDown);
+      //(3)shift(),移除第一个单词
+      var oneDown = [1, 4, 6].shift();
+        document.write(oneDown);
+      //(4)unshift(),在数组的头部添加元素
+      var a = ["zero"];
+      a.unshift("one");
+      for (var i = 0; i < a.length; i++) {
+        document.write(a[i]);
+      }
+      //(5)concat(),允许链接数组并创建一个全新的数组
+      var c1 = ["HTML", "CSS"];
+      var c2 = ["JS", "Python"];
+      var courses = c1.concat(c2);
+      for (var i = 0; i < courses.length; i++) {
+        //courses数组包含HTML CSS JS Python
+        document.write(courses[i]);
+      }
+      //(7)indexOf(),返回数组中某个指定元素的位置
+      var fruits = ["香蕉", "橙子", "苹果", "甜瓜"];
+      var a = fruits.indexOf("苹果");
+      var b = fruits.indexOf("樱桃");
+      //a的值为2
+      document.write(a);
+      //b的值为-1
+      document.write(b);
+      //(8)slice(),可从已有的数组中返回选定的元素
+      var citrus = fruits.slice(1, 4);
+      //橙子,苹果,甜瓜（包含前面的索引，不包含后面的）
+      document.write(citrus);
+      //3.关联数组
+      var person = [];
+      person["name"] = "Loen";
+      person["age"] = 28;
+      document.write(person["age"]);
+    </script>
+  </body>
+</html>
